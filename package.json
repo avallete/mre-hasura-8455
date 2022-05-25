@@ -1,0 +1,15 @@
+{
+  "name": "mre-hasura-8455",
+  "version": "1.0.0",
+  "description": "1. Run Hasura + Postgres database ```bash docker-compose up ```",
+  "main": "index.js",
+  "scripts": {
+    "console": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aaronhayes/hasura-cli": "^2.6.2"
+  }
+}
