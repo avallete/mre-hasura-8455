@@ -4,12 +4,14 @@
   "description": "1. Run Hasura + Postgres database ```bash docker-compose up ```",
   "main": "index.js",
   "scripts": {
+    "get-graphql-user-schema": "npx gq http://localhost:8080/v1/graphql -H "x-hasura-admin-secret: secret" -H "x-hasura-role: user" --introspect > schema.graphql",
     "console": "npx hasura console --address 0.0.0.0  --project hasura",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aaronhayes/hasura-cli": "^2.6.2"
+    "@aaronhayes/hasura-cli": "^2.6.2",
+    "graphqurl": "^1.0.1"
   }
 }
