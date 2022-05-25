@@ -8,6 +8,7 @@ here: https://github.com/hasura/graphql-engine/issues/8455
 git clone git@github.com:avallete/mre-hasura-8455.git
 cd mre-hasura-8455
 npm install
+docker-compose up
 ```
 
 Then fetch the hasura "user" role graphql schema:
