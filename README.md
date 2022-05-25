@@ -1,69 +1,35 @@
-# Setup
+# Steps to reproduce
 
-1. Run Hasura + Postgres database
-```bash
-docker-compose up
+This repo setup a minimal Apollo remote schema + user permissions to easily reproduce bug mentioned
+here: https://github.com/hasura/graphql-engine/issues/8455
+
+
+```
+git clone git@github.com:avallete/mre-hasura-8455.git
+cd mre-hasura-8455
+npm install
 ```
 
-2. Seed org_roles to database
+Then fetch the hasura "user" role graphql schema:
 
-```bash
-cd ./hasura/
-hasura seed apply --file 1625474781277_org_roles_seed.sql
+```
+npm run get-graphql-user-schema
 ```
 
-3. Seed some fake data
+You'll see that the generated schema after docker up is stripped from the "incNumber" mutation (`git diff schema.graphql`)
 
-load a tiny amount of data
-```bash
-cd ./hasura/
-hasura seed apply --file 1625483292341_small_tables_seeds.sql
+Then, open hasura console with:
+
+```
+npm run console
 ```
 
-load a bigger amount of data (bench test)
-```bash
-cd ./hasura/
-hasura seed apply --file 1625484922825_bigger_tables_seeds.sql
+Go to the "remote schema" tab, choose "Apollo", choose "user" role, don't change anything, just click "save permissions"
+
+Then re-run:
+
+```
+npm run get-graphql-user-schema
 ```
 
-
-# Reproduce bottleneck
-
-Choose a user with an org, and then into hasura console run the follwing graphql query using:
-
-- x-hasura-role: user
-- x-hasura-user-id: <USER_UUID>
-
-This query should be very fast
-```gql
-{
-    projects {
-        __typename
-    }
-}
-```
-
-This one way less:
-```gql
-{
-    projects {
-        address {
-            __typename
-        }
-    }
-}
-```
-
-This one should also be slow:
-
-```gql
-{
-    address {
-        project {
-            __typename
-        }
-    }
-}
-```
-
-If you remove the permissions on the "project_address" tables, the requests should speed up. 
+You'll see that the `incNumber` mutation is back in the user schema.graphql
