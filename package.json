@@ -4,7 +4,7 @@
   "description": "1. Run Hasura + Postgres database ```bash docker-compose up ```",
   "main": "index.js",
   "scripts": {
-    "console": "",
+    "console": "npx hasura console --address 0.0.0.0  --project hasura",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

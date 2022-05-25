@@ -1,0 +1,18 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Query {
+  user: User!
+}
+
+type Mutation {
+  incNumber(inp: Int!): Int!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

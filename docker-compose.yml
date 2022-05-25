@@ -12,11 +12,18 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
 
+  apollo:
+    build: ./apollo
+    command: yarn run dev
+    ports:
+      - 4000:4000
   graphql_engine:
     image: hasura/graphql-engine:v2.6.2.cli-migrations-v3
     depends_on:
       postgres:
         condition: service_healthy
+      apollo:
+        condition: service_started
     environment:
       # The local .env file is automatically loaded, you can reuse any variables set in it
       HASURA_GRAPHQL_ADMIN_SECRET: "secret"

@@ -1,1 +1,21 @@
-[]
+- name: Apollo
+  definition:
+    url: http://apollo:4000/graphql
+    timeout_seconds: 60
+    forward_client_headers: true
+  comment: ""
+  permissions:
+    - role: user
+      definition:
+        schema: |
+          type Mutation {
+          	incNumber(inp: Int!): Int!
+          }
+          type Query {
+          	user: User!
+          }
+          type User {
+          	email: String!
+          	id: ID!
+          	name: String!
+          }
