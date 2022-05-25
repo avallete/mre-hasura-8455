@@ -5,6 +5,10 @@ select_permissions:
 - permission:
     columns:
     - id
+    filter: {}
+  role: public
+- permission:
+    columns:
     - name
     filter: {}
   role: user
