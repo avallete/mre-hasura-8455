@@ -39,4 +39,4 @@ You'll see that the `incNumber` mutation is back in the user schema.graphql
 
 Added a demo video with audio comments, pardon my approximative english.
 
-![demo video](https://user-images.githubusercontent.com/8771783/170314757-dd8951da-9717-4381-bc63-008cf32862f3.mov)
+https://user-images.githubusercontent.com/8771783/170314757-dd8951da-9717-4381-bc63-008cf32862f3.mov
