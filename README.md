@@ -8,6 +8,7 @@ here: https://github.com/hasura/graphql-engine/issues/8455
 git clone git@github.com:avallete/mre-hasura-8455.git
 cd mre-hasura-8455
 npm install
+docker-compose up
 ```
 
 Then fetch the hasura "user" role graphql schema:
@@ -33,3 +34,9 @@ npm run get-graphql-user-schema
 ```
 
 You'll see that the `incNumber` mutation is back in the user schema.graphql
+
+## Demo
+
+Added a demo video with audio comments, pardon my approximative english.
+
+https://user-images.githubusercontent.com/8771783/170314757-dd8951da-9717-4381-bc63-008cf32862f3.mov
