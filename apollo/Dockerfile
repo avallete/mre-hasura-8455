@@ -5,9 +5,9 @@ RUN apt-get update
 # add dumb-init to effciently catch container signals
 RUN apt-get install dumb-init
 
-WORKDIR /app
-COPY --chown=node:node . .
 # Avoid being root inside the container
 USER node
+COPY --chown=node:node . /app
+WORKDIR /app
 RUN npm install
 CMD ["dumb-init", "node", "apollo.js"]
