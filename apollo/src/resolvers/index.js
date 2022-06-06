@@ -1,3 +1,4 @@
 import incNumber from "./incNumber";
+import user from "./user";
 
-export default [incNumber];
+export default [incNumber, user];
